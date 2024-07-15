@@ -14,7 +14,7 @@ class PublicAutocompleteService
         $results = DB::table('houses')
             ->join('streets', 'houses.street_id', '=', 'streets.id')
             ->select('houses.slug', 'streets.name as street_name', 'streets.postcode_id as postcode', 'houses.house_number')
-            ->where('streets.name', 'ILIKE', $searchQuery) // Using ILIKE for case-insensitive partial matching
+            ->whereRaw("address_search @@ plainto_tsquery('simple', ?)", [$searchQuery])
             ->limit(25)
             ->get();
 
