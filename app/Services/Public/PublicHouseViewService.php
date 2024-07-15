@@ -8,7 +8,7 @@ class PublicHouseViewService
 {
     public function view($slug): array
     {
-        $house = Houses::with('apartments')->where('slug', '=', $slug)->first();
+        $house = Houses::with('apartments', 'street')->where('slug', '=', $slug)->first();
         if(!$house) {
             abort();
         }
