@@ -20,7 +20,8 @@ class Apartments extends Model
         'id',
         'house_id',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'legal_number'
     ];
 
     protected $casts = [

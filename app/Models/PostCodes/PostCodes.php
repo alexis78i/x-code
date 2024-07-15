@@ -14,8 +14,4 @@ class PostCodes extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;
-
-    protected $hidden = [
-        'id',
-    ];
 }
