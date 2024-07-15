@@ -13,7 +13,7 @@ class PublicHouseViewService
             abort();
         }
 
-        $house->apartments->map(function ($apartment) {
+        $apartments = $house->apartments->map(function ($apartment) {
             return [
                 'slug' => $apartment->slug,
                 'apartment_number' => $apartment->apartment_number,
@@ -21,6 +21,9 @@ class PublicHouseViewService
             ];
         });
 
-        return $house->toArray();
+        $house = $house->toArray();
+        $house['apartments'] = $apartments;
+
+        return $house;
     }
 }
